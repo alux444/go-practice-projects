@@ -1,0 +1,17 @@
+brew services start mysql 
+
+mysql -u root -p
+CREATE USER 'test'@'localhost' IDENTIFIED BY 'Password!12345';
+CREATE DATABASE test;
+GRANT ALL PRIVILEGES ON test.* TO 'test'@'localhost';
+FLUSH PRIVILEGES;
+
+USE test;
+CREATE TABLE bookstore (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    publication VARCHAR(255) NOT NULL
+);
+
+ brew services stop mysql
