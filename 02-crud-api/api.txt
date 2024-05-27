@@ -1,0 +1,12 @@
+GET
+http://localhost:8080/movies
+http://localhost:8080/movies/{id}
+
+POST
+http://localhost:8080/movies + json body
+
+DELETE
+http://localhost:8080/movies/{id}
+
+PUT 
+http://localhost:8080/movies/{id} + json body
