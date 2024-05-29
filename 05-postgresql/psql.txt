@@ -1,0 +1,14 @@
+psql -U postgres
+CREATE ROLE yourusername WITH LOGIN PASSWORD 'yourpassword';
+GRANT ALL PRIVILEGES ON DATABASE testing TO yourusername;
+
+CREATE DATABASE yourdatabase;
+
+CREATE TABLE stocks (
+    stockid SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price NUMERIC(10, 2) NOT NULL,
+    company VARCHAR(255) NOT NULL
+);
+GRANT ALL PRIVILEGES ON TABLE stocks TO yourusername;
+GRANT ALL PRIVILEGES ON SEQUENCE stocks_stockid_seq TO yourusername;
