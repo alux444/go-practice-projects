@@ -172,8 +172,8 @@ func (client *Client) GetPhoto(id int32) (*Photo, error) {
 	return &result, err
 }
 
-func (client *Client) SearchVideo(prompt, perPage, page int) (*VideoSearchResult, error) {
-	url := fmt.Sprintf(VideoApi+"/search?query=%d&per_page=%d&page=%d", prompt, perPage, page)
+func (client *Client) SearchVideo(prompt string, perPage, page int) (*VideoSearchResult, error) {
+	url := fmt.Sprintf(VideoApi+"/search?query=%s&per_page=%d&page=%d", prompt, perPage, page)
 	response, err := client.requestWithAuth("GET", url)
 	if err != nil {
 		return nil, err
@@ -251,7 +251,7 @@ func main() {
 	TOKEN := os.Getenv("API_KEY")
 	var client = NewClient(TOKEN)
 
-	result, err := client.CuratedPhotos(10, 2)
+	result, err := client.GetPhoto(1108099)
 	if err != nil {
 		fmt.Printf("Error getting results: %v\n", err)
 	}
